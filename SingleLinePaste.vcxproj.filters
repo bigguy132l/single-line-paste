@@ -32,13 +32,13 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PasteWithoutLines.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="getSingleLineString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="handleClipboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleLinePaste.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
