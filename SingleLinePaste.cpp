@@ -1,4 +1,4 @@
-// PasteWithoutLines.cpp : Defines the entry point for the application.
+// SingleLinePaste.cpp : Defines the entry point for the application.
 //
 
 #include "stdafx.h"
@@ -8,7 +8,6 @@
 
 int wmain() {
 	std::wstring clipboardData = getSingleLineString(getClipboardText());
-	//std::wstring newClipboardData = getSingleLineString(clipboardData);
 	setClipboardText(clipboardData);
 	return 0;
 }
