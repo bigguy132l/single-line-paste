@@ -35,7 +35,7 @@ public:
 	virtual ~RaiiTextGlobalLock() { GlobalUnlock(m_hData); }
 
 	RaiiTextGlobalLock(const RaiiTextGlobalLock&) = delete;
-	RaiiTextGlobalLock operator=(const RaiiTextGlobalLock) = delete;
+	RaiiTextGlobalLock operator=(const RaiiTextGlobalLock&) = delete;
 
 	const chosen_char* Get() const { return m_psz; }
 
