@@ -12,7 +12,7 @@ __forceinline StrType getSingleLineStringTemplate(const StrType& input) {
 	StreamType stream;
 
 	size_t streamSize = 0;
-	for (size_t i = 0; i < input.length(); streamSize = i++) {
+	for (size_t& i = streamSize; i < input.length(); i++) { // i is a reference to streamSize, to make its usage in-loop somewhat more intuitive
 		auto character = input[i];
 		switch (character) {
 			case '\n':
