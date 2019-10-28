@@ -7,18 +7,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SingleLinePaste", "SingleLi
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug (Assembly)|x64 = Debug (Assembly)|x64
-		Debug (Assembly)|x86 = Debug (Assembly)|x86
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4BCD9E7F-F84B-4C22-8577-9BA5A50839B2}.Debug (Assembly)|x64.ActiveCfg = Debug (Assembly)|x64
-		{4BCD9E7F-F84B-4C22-8577-9BA5A50839B2}.Debug (Assembly)|x64.Build.0 = Debug (Assembly)|x64
-		{4BCD9E7F-F84B-4C22-8577-9BA5A50839B2}.Debug (Assembly)|x86.ActiveCfg = Debug (Assembly)|Win32
-		{4BCD9E7F-F84B-4C22-8577-9BA5A50839B2}.Debug (Assembly)|x86.Build.0 = Debug (Assembly)|Win32
 		{4BCD9E7F-F84B-4C22-8577-9BA5A50839B2}.Debug|x64.ActiveCfg = Debug|x64
 		{4BCD9E7F-F84B-4C22-8577-9BA5A50839B2}.Debug|x64.Build.0 = Debug|x64
 		{4BCD9E7F-F84B-4C22-8577-9BA5A50839B2}.Debug|x86.ActiveCfg = Debug|Win32
