@@ -3,9 +3,15 @@
 #include <string>
 #include <sstream>
 
+#ifdef _MSVC_LANG // so I'm not bound to compilers that support __forceinline
+#define forceinline __forceinline
+#else
+#define forceinline inline
+#endif
+
 // Using a template so I don't have to retype the entire thing (will use template in function definitions)
 template <typename StrType>
-__forceinline StrType getSingleLineStringTemplate(const StrType& input) {
+forceinline StrType getSingleLineStringTemplate(const StrType& input) {
 	using char_t = typename StrType::value_type;
 	using StreamType = std::basic_stringstream<char_t>;
 
