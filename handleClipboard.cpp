@@ -1,3 +1,7 @@
+/* This file contains the only platform-specific code. If you want to port this
+program to another platform, just change this file to work with the platform's
+clipboard API. */
+
 #include "stdafx.h"
 #include "handleClipboard.h"
 #include <stdexcept>
