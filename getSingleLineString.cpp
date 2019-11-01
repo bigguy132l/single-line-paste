@@ -34,7 +34,7 @@ forceinline StrType getSingleLineStringTemplate(const StrType& input) {
 	}
 	
 	char_t* outputData = new char_t[streamSize];
-	stream.get(outputData, streamSize+100, (char_t)0);
+	stream.get(outputData, streamSize+100, static_cast<char_t>(0));
 
 	StrType output(outputData);
 	return output;
