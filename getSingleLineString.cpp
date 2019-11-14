@@ -13,9 +13,8 @@
 template <typename StrType>
 forceinline StrType getSingleLineStringTemplate(const StrType& input) {
 	using char_t = typename StrType::value_type;
-	using StreamType = std::basic_stringstream<char_t>;
 
-	StreamType stream;
+	std::basic_stringstream<char_t> stream;
 
 	size_t streamSize = 0;
 	for (size_t& i = streamSize; i < input.length(); i++) { // i is a reference to streamSize, to make its usage in-loop somewhat more intuitive
