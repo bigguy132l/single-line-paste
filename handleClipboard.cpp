@@ -80,8 +80,3 @@ void setClipboardText(std::unique_ptr<chosen_string> data)
 
 	SetClipboardData(CHOSEN_FORMAT, hglbCopy);
 }
-
-void setClipboardText(const chosen_string& data)
-{
-	setClipboardText(std::move(std::make_unique<chosen_string>(data)));
-}
