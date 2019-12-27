@@ -28,7 +28,7 @@ wstrptr getSingleLineString(wstrptr input) {
 	wchar_t* outputData = new wchar_t[streamSize];
 	stream.get(outputData, streamSize + 10, '\0');
 
-	return std::make_unique<std::wstring>(std::wstring(outputData));
+	return wstrptr(new std::wstring(outputData));
 }
 
 wstrptr singleLineCopy()
