@@ -9,4 +9,4 @@ using wstrptr = std::unique_ptr<std::wstring>;
 wstrptr getSingleLineString(wstrptr input);
 
 // returns a single-line string based on the current contents of the clipboard
-inline wstrptr singleLineCopy();
+wstrptr singleLineCopy();

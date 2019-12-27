@@ -31,7 +31,7 @@ wstrptr getSingleLineString(wstrptr input) {
 	return std::make_unique<std::wstring>(std::wstring(outputData));
 }
 
-inline wstrptr singleLineCopy()
+wstrptr singleLineCopy()
 {
 	return getSingleLineString(getClipboardText());
 }
