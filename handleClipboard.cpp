@@ -48,7 +48,7 @@ private:
 	const chosen_char* m_psz;
 };
 
-chosen_string WINAPI getClipboardText()
+chosen_string getClipboardText()
 {
 	RaiiClipboard clipboardLock;
 
@@ -63,7 +63,7 @@ chosen_string WINAPI getClipboardText()
 	return text;
 }
 
-void WINAPI setClipboardText(std::unique_ptr<chosen_string> data)
+void setClipboardText(std::unique_ptr<chosen_string> data)
 {
 	size_t strLength = (data->length()+1) * sizeof(chosen_char);
 
@@ -81,7 +81,7 @@ void WINAPI setClipboardText(std::unique_ptr<chosen_string> data)
 	SetClipboardData(CHOSEN_FORMAT, hglbCopy);
 }
 
-void WINAPI setClipboardText(const chosen_string& data)
+void setClipboardText(const chosen_string& data)
 {
 	setClipboardText(std::move(std::make_unique<chosen_string>(data)));
 }
