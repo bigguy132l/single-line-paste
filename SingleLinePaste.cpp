@@ -14,11 +14,3 @@ int wmain() {
 	setClipboardText(newText.get());
 	return 0;
 }
-
-#ifndef UNICODE
-int main() {
-	std::unique_ptr<std::string> newText(getSingleLineString(getClipboardText()));
-	setClipboardText(newText.get());
-	return 0;
-}
-#endif

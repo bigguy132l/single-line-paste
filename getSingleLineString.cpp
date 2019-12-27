@@ -43,7 +43,3 @@ forceinline std::unique_ptr<StrType> getSingleLineStringTemplate(const StrType* 
 std::unique_ptr<std::wstring> getSingleLineString(const std::wstring* input) {
 	return getSingleLineStringTemplate<std::wstring>(input);
 }
-
-std::unique_ptr<std::string> getSingleLineString(const std::string* input) {
-	return getSingleLineStringTemplate<std::string>(input);
-}
