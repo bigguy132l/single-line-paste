@@ -3,5 +3,10 @@
 #include <string>
 #include <memory>
 
-// takes a std::string or std::wstring and return the same string, with newlines replaced by spaces
-std::unique_ptr<std::wstring> getSingleLineString(const std::wstring*);
+using wstrptr = std::unique_ptr<std::wstring>;
+
+// takes a std::wstring and return the same string, with newlines replaced by spaces
+wstrptr getSingleLineString(wstrptr input);
+
+// returns a single-line string based on the current contents of the clipboard
+inline wstrptr singleLineCopy();
