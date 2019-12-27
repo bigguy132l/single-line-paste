@@ -8,13 +8,15 @@
 #include <memory>
 
 int wmain() {
-	setClipboardText(std::move(getSingleLineString(getClipboardText())));
+	std::unique_ptr<std::wstring> newText(getSingleLineString(getClipboardText()));
+	setClipboardText(newText.get());
 	return 0;
 }
 
 #ifndef UNICODE
 int main() {
-	setClipboardText(std::move(getSingleLineString(getClipboardText())));
+	std::unique_ptr<std::string> newText(getSingleLineString(getClipboardText()));
+	setClipboardText(newText.get());
 	return 0;
 }
 #endif

@@ -63,7 +63,7 @@ chosen_string getClipboardText()
 	return text;
 }
 
-void setClipboardText(std::unique_ptr<chosen_string> data)
+void setClipboardText(const chosen_string* data)
 {
 	size_t strLength = (data->length()+1) * sizeof(chosen_char);
 
