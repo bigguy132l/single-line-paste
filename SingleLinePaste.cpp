@@ -5,18 +5,16 @@
 #include "getSingleLineString.h"
 #include "handleClipboard.h"
 #include <string>
+#include <memory>
 
 int wmain() {
-	std::wstring clipboardData = getSingleLineString(getClipboardText());
-	setClipboardText(clipboardData);
+	setClipboardText(std::move(getSingleLineString(getClipboardText())));
 	return 0;
 }
 
 #ifndef UNICODE
 int main() {
-	std::string clipboardData = getClipboardText();
-	std::string newClipboardData = getSingleLineString(clipboardData);
-	setClipboardText(newClipboardData);
+	setClipboardText(std::move(getSingleLineString(getClipboardText())));
 	return 0;
 }
 #endif

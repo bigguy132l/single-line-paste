@@ -63,20 +63,25 @@ chosen_string WINAPI getClipboardText()
 	return text;
 }
 
-void WINAPI setClipboardText(const chosen_string& data)
+void WINAPI setClipboardText(std::unique_ptr<chosen_string> data)
 {
-	size_t strLength = (data.length()+1) * sizeof(chosen_char);
+	size_t strLength = (data->length()+1) * sizeof(chosen_char);
 
 	HGLOBAL hglbCopy = GlobalAlloc(GMEM_MOVEABLE, strLength);
 	if (hglbCopy == nullptr) 
 		throw std::runtime_error("Couldn't allocate memory");
 
 	LPTSTR lptstrCopy = static_cast<LPTSTR>(GlobalLock(hglbCopy));
-	memcpy(lptstrCopy, data.c_str(), strLength);
-	lptstrCopy[data.length()] = static_cast<chosen_char>(0);
+	memcpy(lptstrCopy, data->c_str(), strLength);
+	lptstrCopy[data->length()] = '\0';
 	GlobalUnlock(hglbCopy);
 
 	RaiiClipboard clipboardLock;
 
 	SetClipboardData(CHOSEN_FORMAT, hglbCopy);
+}
+
+void WINAPI setClipboardText(const chosen_string& data)
+{
+	setClipboardText(std::move(std::make_unique<chosen_string>(data)));
 }

@@ -2,6 +2,7 @@
 #include "getSingleLineString.h"
 #include <string>
 #include <sstream>
+#include <memory>
 
 #ifdef _MSVC_LANG // so I'm not bound to compilers that support __forceinline
 #define forceinline __forceinline
@@ -11,13 +12,13 @@
 
 // Using a template so I don't have to retype the entire thing (will use template in function definitions)
 template <typename StrType>
-forceinline StrType getSingleLineStringTemplate(const StrType& input) {
+forceinline std::unique_ptr<StrType> getSingleLineStringTemplate(const StrType& input) {
 	using char_t = typename StrType::value_type;
 
 	std::basic_stringstream<char_t> stream;
 
 	size_t streamSize = 0;
-	for (size_t& i = streamSize; i < input.length(); i++) { // i is a reference to streamSize, to make its usage in-loop somewhat more intuitive
+	for (size_t& i = streamSize; i < input.length(); i++) { // reference to streamSize is more intuitive in the loop
 		auto character = input[i];
 		switch (character) {
 			case '\n':
@@ -33,17 +34,16 @@ forceinline StrType getSingleLineStringTemplate(const StrType& input) {
 	}
 	
 	char_t* outputData = new char_t[streamSize];
-	stream.get(outputData, streamSize+100, static_cast<char_t>(0));
+	stream.get(outputData, streamSize+10, '\0');
 
-	StrType output(outputData);
-	return output;
+	return std::make_unique<StrType>(StrType(outputData));
 }
 
 // takes a wstring as input, and returns it with any newline characters replaced with spaces
-std::wstring getSingleLineString(const std::wstring& input) {
+std::unique_ptr<std::wstring> getSingleLineString(const std::wstring& input) {
 	return getSingleLineStringTemplate<std::wstring>(input);
 }
 
-std::string getSingleLineString(const std::string& input) {
+std::unique_ptr<std::string> getSingleLineString(const std::string& input) {
 	return getSingleLineStringTemplate<std::string>(input);
 }
