@@ -48,7 +48,7 @@ private:
 	const chosen_char* m_psz;
 };
 
-chosen_string getClipboardText()
+std::unique_ptr<chosen_string> getClipboardText()
 {
 	RaiiClipboard clipboardLock;
 
@@ -60,7 +60,7 @@ chosen_string getClipboardText()
 
 	chosen_string text(clipboardText.Get());
 
-	return text;
+	return std::make_unique<chosen_string>(text);
 }
 
 void setClipboardText(const chosen_string* data)

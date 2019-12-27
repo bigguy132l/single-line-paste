@@ -12,20 +12,20 @@
 
 // Using a template so I don't have to retype the entire thing (will use template in function definitions)
 template <typename StrType>
-forceinline std::unique_ptr<StrType> getSingleLineStringTemplate(const StrType& input) {
+forceinline std::unique_ptr<StrType> getSingleLineStringTemplate(const StrType* input) {
 	using char_t = typename StrType::value_type;
 
 	std::basic_stringstream<char_t> stream;
 
 	size_t streamSize = 0;
-	for (size_t& i = streamSize; i < input.length(); i++) { // reference to streamSize is more intuitive in the loop
-		auto character = input[i];
+	for (size_t& i = streamSize; i < input->length(); i++) { // reference to streamSize is more intuitive in the loop
+		auto character = input->at(i);
 		switch (character) {
 			case '\n':
 				stream << ' ';
 				break;
 			case '\r':
-				if (input[i + 1] != '\n')
+				if (input->at(i+1) != '\n')
 					stream << ' ';
 				break;
 			default:
@@ -40,10 +40,10 @@ forceinline std::unique_ptr<StrType> getSingleLineStringTemplate(const StrType& 
 }
 
 // takes a wstring as input, and returns it with any newline characters replaced with spaces
-std::unique_ptr<std::wstring> getSingleLineString(const std::wstring& input) {
+std::unique_ptr<std::wstring> getSingleLineString(const std::wstring* input) {
 	return getSingleLineStringTemplate<std::wstring>(input);
 }
 
-std::unique_ptr<std::string> getSingleLineString(const std::string& input) {
+std::unique_ptr<std::string> getSingleLineString(const std::string* input) {
 	return getSingleLineStringTemplate<std::string>(input);
 }

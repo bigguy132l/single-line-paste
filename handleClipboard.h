@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 #ifdef UNICODE
 using chosen_string = std::wstring;
@@ -8,5 +9,5 @@ using chosen_string = std::wstring;
 using chosen_string = std::string;
 #endif
 
-chosen_string getClipboardText();
+std::unique_ptr<chosen_string> getClipboardText();
 void setClipboardText(const chosen_string* data);

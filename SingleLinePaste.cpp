@@ -8,7 +8,9 @@
 #include <memory>
 
 int wmain() {
-	std::unique_ptr<std::wstring> newText(getSingleLineString(getClipboardText()));
+	using strptr = std::unique_ptr<std::wstring>;
+	strptr oldText(getClipboardText());
+	strptr newText(getSingleLineString(oldText.get()));
 	setClipboardText(newText.get());
 	return 0;
 }
