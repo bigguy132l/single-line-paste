@@ -58,9 +58,7 @@ std::unique_ptr<chosen_string> getClipboardText()
 
 	RaiiTextGlobalLock clipboardText(hData);
 
-	chosen_string text(clipboardText.Get());
-
-	return std::make_unique<chosen_string>(text);
+	return std::unique_ptr<chosen_string>(new chosen_string(clipboardText.Get()));
 }
 
 void setClipboardText(const chosen_string* data)
